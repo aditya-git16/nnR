@@ -16,6 +16,6 @@ pub fn epoch(train : &[f64] , model : &mut Model) {
         let loss = loss_sq(error);
         println!("loss = {}" , loss);
         model.update(actual_value, *i);
-        println!("model weight after gradient descent = {}" , model.w)
+        println!("model weight after gradient descent = {} , bias = {}" , model.w , model.b)
     }
 }

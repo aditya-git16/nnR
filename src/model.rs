@@ -3,24 +3,28 @@
 
 pub struct Model {
     pub w : f64,
+    pub b : f64,
 }
 
 impl Model {
     pub fn new () -> Self {
-        Model { w: 1.0 }
+        Model { w: 0.0  , b: 0.0}
     }
 
     pub fn update(&mut self , actual_value : f64 , input : f64) {
         
         // learning rate
-        let l_rate = 0.05;
+        let l_rate = 0.1;
 
-        let w_new = self.w - l_rate*(2.0*(self.w*input - actual_value)*input);
+        let w_new = self.w - l_rate*(2.0*(self.w*input + self.b - actual_value)*input);
+
+        let b_new = self.b - l_rate*(2.0*(self.w*input + self.b - actual_value));
 
         self.w = w_new;
+        self.b = b_new;
     }
 
     pub fn prediction(&self , x : f64 ) -> f64 {
-        return self.w * x;
+        return self.w * x + self.b;
     }
 }
