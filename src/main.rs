@@ -1,16 +1,14 @@
-use nn_r::model::prediction;
-use nn_r::util::linear;
-use nn_r::loss::loss_sq;
+use nn_r::{epoch::epoch, model::Model};
 
 fn main() {
-    let x = 4.0;
-    let prediction = prediction(x);
-    println!("prediction = {}" , prediction);
-    let actual_value = linear(x);
-    println!("actual_value = {}" , actual_value);
-    let error = prediction - actual_value;
-    let error_absolute  = (prediction - actual_value).abs();
-    println!("error  = {} , error_absolute = {}" , error , error_absolute);
-    let loss = loss_sq(error);
-    println!("Loss = {}", loss)
+    let train : [f64 ; 5] = [1.1 , 2.0 , 3.2 , 4.0, 5.0];
+    let n_epochs = 5;
+    let mut runs = 0;
+    let mut model = Model::new();
+    println!("initial weight = {}" , model.w);
+    while runs < n_epochs {
+        epoch(&train , &mut model);
+        runs += 1;
+    }
+    println!("final weight = {}" , model.w);
 }
