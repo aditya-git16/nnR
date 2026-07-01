@@ -13,7 +13,7 @@ impl Model {
     pub fn update(&mut self , actual_value : f64 , input : f64) {
         
         // learning rate
-        let l_rate = 0.01;
+        let l_rate = 0.05;
 
         let w_new = self.w - l_rate*(2.0*(self.w*input - actual_value)*input);
 
