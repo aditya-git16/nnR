@@ -1,5 +1,5 @@
-pub mod model;
-pub mod util;
-pub mod loss;
 pub mod epoch;
+pub mod loss;
+pub mod model;
 pub mod types;
+pub mod util;
