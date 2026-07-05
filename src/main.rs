@@ -8,11 +8,11 @@ fn main() {
     // for now lets assume number if weights = number of values in a sample set
     let sample_len: u64 = train[0].len() as u64;
     let mut model = Model::new(sample_len);
-    println!("initial weight = {}", model.w);
+    println!("initial weight = {:?}", model.weights);
     while runs < n_epochs {
         epoch(&train, &mut model);
         runs += 1;
     }
-    println!("final weight = {}", model.w);
+    println!("final weight = {:?}", model.weights);
     println!("final bias = {}", model.b);
 }

@@ -18,8 +18,8 @@ pub fn epoch(train: &Train, model: &mut Model) {
         println!("loss = {}", loss);
         model.update(actual_value, *i);
         println!(
-            "model weight after gradient descent = {} , bias = {}",
-            model.w, model.b
+            "model weight after gradient descent = {:?} , bias = {}",
+            model.weights, model.b
         )
     }
 }
