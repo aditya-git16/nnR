@@ -1,6 +1,8 @@
 // making a basic model
 // Initially only taking a single parameter w
 
+use crate::types::Sample;
+
 pub struct Model {
     pub weights: Vec<f64>,
     pub b: f64,
@@ -33,7 +35,11 @@ impl Model {
         self.b = b_new;
     }
 
-    pub fn prediction(&self, input: f64) -> f64 {
-        return self.w * input + self.b;
+    pub fn prediction(&self, input: Sample) -> f64 {
+        let mut value: f64  = 0.0;
+        for (i, val) in input.iter().enumerate() {
+            value =  value + self.weights[i]*val
+        }
+        return value + self.b;
     }
 }
