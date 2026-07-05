@@ -3,13 +3,14 @@
 
 use crate::loss::loss_sq;
 use crate::model::{Model};
-use crate::util::linear;
+use crate::util::{linear , mv_linear};
+use crate::types::Train;
 
-pub fn epoch(train : &[f64] , model : &mut Model) {
+pub fn epoch(train : &Train , model : &mut Model) {
     for i in train {
         let prediction = model.prediction(*i);
         println!("predicted value = {}" , prediction);
-        let actual_value = linear(*i);
+        let actual_value = mv_linear(*i);
         println!("actual value = {}" , actual_value);
         let error = prediction - actual_value;
         println!("error = {}" , error);

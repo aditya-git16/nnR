@@ -24,7 +24,7 @@ impl Model {
         self.b = b_new;
     }
 
-    pub fn prediction(&self , x : f64 ) -> f64 {
-        return self.w * x + self.b;
+    pub fn prediction(&self , input : f64 ) -> f64 {
+        return self.w * input + self.b;
     }
 }
