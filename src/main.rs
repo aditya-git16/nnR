@@ -5,7 +5,9 @@ fn main() {
     let train : Train = [[1.1 , 2.3] , [2.0 , 2.9] , [3.2 , 9.1] , [4.0 , 5.7] , [5.0 , 2.4]];
     let n_epochs = 20;
     let mut runs = 0;
-    let mut model = Model::new();
+    // for now lets assume number if weights = number of values in a sample set
+    let sample_len = train[0].len();
+    let mut model = Model::new(sample_len);
     println!("initial weight = {}" , model.w);
     while runs < n_epochs {
         epoch(&train , &mut model);
