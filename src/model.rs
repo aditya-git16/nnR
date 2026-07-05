@@ -25,7 +25,7 @@ impl Model {
 
     pub fn update(&mut self, input: Sample , error : f64) {
         // learning rate
-        let l_rate = 0.01;
+        let l_rate = 0.15;
 
         for (i, val) in input.iter().enumerate() {
             let w_new = self.weights[i] - l_rate * (2.0 * (error) * val);

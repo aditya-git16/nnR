@@ -1,4 +1,4 @@
-use nn_r::{epoch::epoch, model::Model, types::Train};
+use nn_r::{epoch::epoch, model::Model, types::Train , feature::normalise};
 
 fn main() {
     // will use nested lists for mutiple inputs as a single training input in a training set
@@ -16,6 +16,7 @@ fn main() {
         [9.0, 1.0],
         [3.9, 8.2],
     ];
+    let normalise_train = normalise(&train);
     let n_epochs = 100;
     let mut runs = 0;
     // for now lets assume number if weights = number of values in a sample set
@@ -23,7 +24,7 @@ fn main() {
     let mut model = Model::new(sample_len);
     println!("initial weight = {:?}", model.weights);
     while runs < n_epochs {
-        epoch(&train, &mut model);
+        epoch(&normalise_train, &mut model);
         runs += 1;
     }
     println!("final weight = {:?}", model.weights);
