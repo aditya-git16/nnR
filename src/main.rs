@@ -6,7 +6,7 @@ fn main() {
     let n_epochs = 20;
     let mut runs = 0;
     // for now lets assume number if weights = number of values in a sample set
-    let sample_len = train[0].len();
+    let sample_len : u64 = train[0].len() as u64;
     let mut model = Model::new(sample_len);
     println!("initial weight = {}" , model.w);
     while runs < n_epochs {
