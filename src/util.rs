@@ -8,7 +8,6 @@ pub fn linear(x: f64) -> f64 {
 }
 
 // define multi variable linear function
-
 pub fn mv_linear(sample: Sample) -> f64 {
     let constant = 12.0;
     return 3.2 * sample[0] + 1.3 * sample[1] + constant;

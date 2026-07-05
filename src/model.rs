@@ -23,14 +23,14 @@ impl Model {
         }
     }
 
-    pub fn update(&mut self, actual_value: f64, input: Sample) {
+    pub fn update(&mut self, input: Sample , error : f64) {
         // learning rate
-        let l_rate = 0.1;
+        let l_rate = 0.01;
 
         for (i, val) in input.iter().enumerate() {
-            let w_new = self.weights[i] - l_rate * (2.0 * (self.weights[i] * val + self.b - actual_value) * val);
+            let w_new = self.weights[i] - l_rate * (2.0 * (error) * val);
 
-            let b_new = self.b - l_rate * (2.0 * (self.weights[i] * val + self.b - actual_value));
+            let b_new = self.b - l_rate * (2.0 * (error));
 
             self.weights[i] = w_new;
             self.b = b_new;
