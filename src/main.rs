@@ -1,4 +1,4 @@
-use nn_r::{epoch::epoch, model::Model, types::Train , feature::normalise};
+use nn_r::{epoch::epoch, feature::normalise, model::Model, types::Train};
 
 fn main() {
     // will use nested lists for mutiple inputs as a single training input in a training set
@@ -21,6 +21,9 @@ fn main() {
     let mut runs = 0;
     // for now lets assume number if weights = number of values in a sample set
     let sample_len: u64 = train[0].len() as u64;
+    // number of neurons in the neural net
+    // each neuron has its own function/output
+    let n_neurons = 2 as u64;
     let mut model = Model::new(sample_len);
     println!("initial weight = {:?}", model.weights);
     while runs < n_epochs {

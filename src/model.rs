@@ -3,8 +3,11 @@
 
 use crate::types::Sample;
 
+// 2 neurons for 2 outputs
+// each neuron will have its own vector of weights
+// weights : [neuron_1 : [w1 , w2 , w3 , ....] , neuron_2 : [w1 , w2 , w3 , ....] , ...]
 pub struct Model {
-    pub weights: Vec<f64>,
+    pub weights: Vec<Vec<f64>>,
     pub b: f64,
 }
 
@@ -23,7 +26,7 @@ impl Model {
         }
     }
 
-    pub fn update(&mut self, input: Sample , error : f64) {
+    pub fn update(&mut self, input: Sample, error: f64) {
         // learning rate
         let l_rate = 0.15;
 

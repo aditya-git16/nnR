@@ -16,7 +16,7 @@ pub fn epoch(train: &Train, model: &mut Model) {
         println!("error = {}", error);
         let loss = loss_sq(error);
         println!("loss = {}", loss);
-        model.update( *i ,error);
+        model.update(*i, error);
         println!(
             "model weight after gradient descent = {:?} , bias = {}",
             model.weights, model.b
