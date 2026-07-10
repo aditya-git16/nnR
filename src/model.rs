@@ -12,13 +12,19 @@ pub struct Model {
 }
 
 impl Model {
-    pub fn new(n_weights: u64) -> Self {
-        // initialise all wights to 0
+    pub fn new(n_neurons : u64 , n_weights: u64) -> Self {
+        // initial weight vector which will contian weights of all neurons
         let mut weights = Vec::new();
-        let mut i = 0;
-        while i < n_weights {
-            weights.push(0.0);
-            i += 1;
+        // loop for intialising neuron weight vectors
+        for _ in 0..n_neurons {
+            // create empty neuron_weight vector
+            let mut neuron_weights = Vec::new();
+            // n_weights = _n_features , so push n_weights in the neuron weight vetor
+            for _ in 0..n_weights{
+                neuron_weights.push(0.0);
+            }
+            // push the neuron vector in the main weights vector
+            weights.push(neuron_weights);
         }
         Model {
             weights: weights,

@@ -24,7 +24,7 @@ fn main() {
     // number of neurons in the neural net
     // each neuron has its own function/output
     let n_neurons = 2 as u64;
-    let mut model = Model::new(sample_len);
+    let mut model = Model::new(n_neurons ,sample_len);
     println!("initial weight = {:?}", model.weights);
     while runs < n_epochs {
         epoch(&normalise_train, &mut model);
