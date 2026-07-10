@@ -20,16 +20,16 @@ fn main() {
     let n_epochs = 100;
     let mut runs = 0;
     // for now lets assume number if weights = number of values in a sample set
-    let sample_len: u64 = train[0].len() as u64;
+    let n_weights: usize = train[0].len() as usize;
     // number of neurons in the neural net
     // each neuron has its own function/output
-    let n_neurons = 2 as u64;
-    let mut model = Model::new(n_neurons ,sample_len);
+    let n_neurons = 2;
+    let mut model = Model::new(n_neurons ,n_weights);
     println!("initial weight = {:?}", model.weights);
     while runs < n_epochs {
         epoch(&normalise_train, &mut model);
         runs += 1;
     }
     println!("final weight = {:?}", model.weights);
-    println!("final bias = {}", model.b);
+    println!("final bias = {:?}", model.b);
 }
