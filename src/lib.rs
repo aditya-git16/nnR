@@ -5,3 +5,4 @@ pub mod model;
 pub mod types;
 pub mod util;
 pub mod error;
+pub mod matrix;
