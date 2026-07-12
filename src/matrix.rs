@@ -21,6 +21,19 @@ impl Matrix {
     pub fn new_from_1d(row : usize , column : usize , data : Vec<f64>) -> Self {
         Matrix {rows : row , columns : column , data : data}
     }
+
+    pub fn new_from_2d(input : Vec<Vec<f64>>) -> Self {
+        let mut rows = 0;
+        let columns = input[0].len();
+        let mut data = Vec::new();
+        for i in input {
+            for j in i {
+                data.push(j);
+            }
+            rows += 1;
+        }
+        Matrix { rows: rows, columns, data }
+    }
 }
 
 #[cfg(test)]
@@ -43,5 +56,16 @@ mod tests {
         assert_eq!(matrix.rows, 2);
         assert_eq!(matrix.columns, 2);
         assert_eq!(matrix.data , data);
+    }
+
+    #[test]
+    fn test_matrix_initialisation_2d() {
+        let data = vec![vec![3.0 , 2.6 ], vec![7.1 , 9.5] ];
+        let matrix = Matrix::new_from_2d(data.clone());
+        println!("Matrix = {:?}" , matrix);
+        assert_eq!(matrix.rows, 2);
+        assert_eq!(matrix.columns, 2);
+        let expected: Vec<f64> = data.into_iter().flatten().collect();
+        assert_eq!(matrix.data, expected);
     }
 }
