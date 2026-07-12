@@ -39,6 +39,14 @@ impl Matrix {
     pub fn shape(&self) -> (usize , usize) {
         return (self.rows , self.columns);
     }
+
+    pub fn set_by_index(&mut self , row : usize , column : usize , value : f64){
+        self.data[row*self.columns + column] = value;
+    }
+
+    pub fn get_by_index(&self , row : usize , column : usize) -> f64 {
+        return self.data[row*self.columns + column]
+    }
 }
 
 #[cfg(test)]
