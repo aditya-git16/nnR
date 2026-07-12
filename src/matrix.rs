@@ -17,6 +17,10 @@ impl Matrix {
     pub fn new(row : usize , column : usize) -> Self {
         Matrix { rows : row, columns : column , data: vec![0.0 ; row*column] }
     }
+
+    pub fn new_from_1d(row : usize , column : usize , data : Vec<f64>) -> Self {
+        Matrix {rows : row , columns : column , data : data}
+    }
 }
 
 #[cfg(test)]
@@ -29,5 +33,15 @@ mod tests {
         println!("Matrix = {:?}" , matrix);
         assert_eq!(matrix.rows, 2);
         assert_eq!(matrix.columns, 2);
+    }
+
+    #[test]
+    fn test_matrix_initialisation_1d() {
+        let data = vec![3.0 , 2.6 , 7.1 , 9.5 ];
+        let matrix = Matrix::new_from_1d(2, 2, data.clone());
+        println!("Matrix = {:?}" , matrix);
+        assert_eq!(matrix.rows, 2);
+        assert_eq!(matrix.columns, 2);
+        assert_eq!(matrix.data , data);
     }
 }
