@@ -34,6 +34,11 @@ impl Matrix {
         }
         Matrix { rows: rows, columns, data }
     }
+
+    // return the shape of the matrix
+    pub fn shape(&self) -> (usize , usize) {
+        return (self.rows , self.columns);
+    }
 }
 
 #[cfg(test)]
@@ -67,5 +72,13 @@ mod tests {
         assert_eq!(matrix.columns, 2);
         let expected: Vec<f64> = data.into_iter().flatten().collect();
         assert_eq!(matrix.data, expected);
+    }
+
+    #[test]
+    pub fn test_shape(){
+        let matrix = Matrix::new(2, 2);
+        let shape = matrix.shape();
+        assert_eq!(matrix.rows , shape.0);
+        assert_eq!(matrix.columns , shape.1);
     }
 }
